@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\DirectoryController;
 use App\Http\Controllers\Dashboard\Organizational_chartController;
 use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\ResourceController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,33 +33,36 @@ Route::get('/catalogos', function(){
     return view('presentation.catalogos');
 })->name('catalogos');
 
-Route::get('/riggin', function(){
-    return view('services.riggin');
-})->name('riggin');
 
-Route::get('/automatizacion', function(){
-    return view('services.automatizacion');
-})->name('automatizacion');
-
-Route::get('/industria', function(){
-    return view('services.industria');
-})->name('industria');
-
-Route::get('/maquinados', function(){
-    return view('services.maquinados');
-})->name('maquinados');
-
-Route::get('/seguridad-industrial', function(){
-    return view('services.seguridad-industrial');
-})->name('seguridad-industrial');
-
-Route::get('/mtto-general', function(){
-    return view('services.mtto-gral');
-})->name('mtto-gral');
-
-Route::get('/mtto-industrial', function(){
-    return view('services.mtto-industrial');
-})->name('mtto-industrial');
+Route::group(['prefix' => 'servicios'], function(){
+    Route::get('/electrico', function(){
+        return view('services.electrico');
+    })->name('electrico');
+    
+    Route::get('/mecanico', function(){
+        return view('services.mecanico');
+    })->name('mecanico');
+    
+    Route::get('/riggin', function(){
+        return view('services.riggin');
+    })->name('riggin');
+    
+    Route::get('/automatizacion', function(){
+        return view('services.automatizacion');
+    })->name('automatizacion');
+    
+    Route::get('/industria-4.0', function(){
+        return view('services.industria');
+    })->name('industria');
+    
+    Route::get('/maquinados', function(){
+        return view('services.maquinados');
+    })->name('maquinados');
+    
+    Route::get('/seguridad-industrial', function(){
+        return view('services.seguridad-industrial');
+    })->name('seguridad-industrial');
+});
 
 Route::get('/contacto', function(){
     return view('presentation.contacto');
@@ -82,6 +86,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     Route::resource('directories', DirectoryController::class)->except('show');
     Route::resources([
         'users' => UserController::class,
+        'resources' => ResourceController::class,
     ]);
     Route::get('profile/{user}/edit', [ProfileController::class, 'add_digital_card'])->name('profile.card');
     Route::post('profile/{user}/update', [ProfileController::class, 'register_digital_card'])->name('profile.card.update');

@@ -10,6 +10,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:50|unique:departments',
             'icon' => 'required|mimes:jpeg,jpg,png|max:10240',
+            'banner' => 'required|mimes:jpeg,jpg,png|max:10240',
         ];
     }
     /**

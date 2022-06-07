@@ -1,10 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <img src="{{ asset('assets/icons-departments/' . $department->icon) }}" width="5%" alt="">
-        <img src="{{ asset('assets/banners/' . $department->banner) }}" width="10%" alt="">
-
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar departamento') . ' - ' . $department->name}}
+            {{ __('Crear recurso') }}
         </h2>
     </x-slot>
 
@@ -16,17 +13,17 @@
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
                 
-                        <form method="POST" action="{{ route('departments.update', $department->id) }}" enctype="multipart/form-data" >
-                            @method('PUT')
-                            @include('dashboard.departments._form', ["task" => "edit"])
+                        <form method="POST" action="{{ route('resources.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            @include('dashboard.resources._form')
                         </form>
-                    </x-guest-layout>
+                </x-guest-layout>
+                
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
-
 
 
 

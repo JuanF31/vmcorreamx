@@ -108,13 +108,13 @@ megaLink.forEach(link => link.onmouseover = ( e ) => {
             document.querySelector('#ico__seguridad').classList.remove('d-none')
             document.querySelector('#img__seguridad').classList.remove('d-none')
         break;
-        case "Mantenimiento General":
-            document.querySelector('#ico__mgeneral').classList.remove('d-none')
-            document.querySelector('#img__mgeneral').classList.remove('d-none')
+        case "Eléctrico":
+            document.querySelector('#ico__electrico').classList.remove('d-none')
+            document.querySelector('#img__electrico').classList.remove('d-none')
         break;
-        case "Mantenimiento Industrial":
-            document.querySelector('#ico__mindustrial').classList.remove('d-none')
-            document.querySelector('#img__mindustrial').classList.remove('d-none')
+        case "Mecánico":
+            document.querySelector('#ico__mecanico').classList.remove('d-none')
+            document.querySelector('#img__mecanico').classList.remove('d-none')
         break;
     }
     document.querySelector('#img__default').classList.add('d-none')
@@ -143,13 +143,13 @@ megaLink.forEach(link => link.onmouseout = ( e ) => {
             document.querySelector('#ico__seguridad').classList.add('d-none')
             document.querySelector('#img__seguridad').classList.add('d-none')
         break;
-        case "Mantenimiento General":
-            document.querySelector('#ico__mgeneral').classList.add('d-none')
-            document.querySelector('#img__mgeneral').classList.add('d-none')
+        case "Eléctrico":
+            document.querySelector('#ico__electrico').classList.add('d-none')
+            document.querySelector('#img__electrico').classList.add('d-none')
         break;
-        case "Mantenimiento Industrial":
-            document.querySelector('#ico__mindustrial').classList.add('d-none')
-            document.querySelector('#img__mindustrial').classList.add('d-none')
+        case "Mecánico":
+            document.querySelector('#ico__mecanico').classList.add('d-none')
+            document.querySelector('#img__mecanico').classList.add('d-none')
         break;
     }
     document.querySelector('#img__default').classList.remove('d-none')
@@ -205,8 +205,8 @@ const setActiveLink = () => {
             document.querySelector('.catalogo').classList.add('activo')
         break;
         default:
-            if(urlActual === "/riggin" || urlActual === "/automatizacion" || urlActual === "/industria" ||
-                urlActual === "/maquinados" || urlActual === "/seguridad-industrial" || urlActual === "/mtto-gral" || urlActual === "/mtto-industrial"){
+            if(urlActual === "/servicios/riggin" || urlActual === "/servicios/automatizacion" || urlActual === "/servicios/industria-4.0" ||
+                urlActual === "/servicios/maquinados" || urlActual === "/servicios/seguridad-industrial" || urlActual === "/servicios/mecanico" || urlActual === "/servicios/electrico"){
                 document.querySelector('.wrench').classList.add('activo')
                 document.querySelector('.servicio').classList.add('activo')
                 document.querySelector('#servicios__modal').classList.add('activo')

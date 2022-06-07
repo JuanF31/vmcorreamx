@@ -35,13 +35,13 @@
                         <i class="fa-solid fa-angle-right dropdown"></i>
                     </a>
                     <div class="sub__menu__responsive">
-                        <a href="{{ route('riggin') }}">Rigging</a>
+                        <a href="{{ route('electrico') }}">Eléctrico</a>
+                        <a href="{{ route('mecanico') }}">Mecánico</a>
                         <a href="{{ route('automatizacion') }}">Automatización</a>
                         <a href="{{ route('industria') }}">Industria 4.0</a>
                         <a href="{{ route('maquinados') }}">Maquinados</a>
                         <a href="{{ route('seguridad-industrial') }}">Seguridad Industrial</a>
-                        <a href="{{ route('mtto-gral') }}">Mantenimiento General</a>
-                        <a href="{{ route('mtto-industrial') }}">Mantenimiento Industrial</a>
+                        <a href="{{ route('riggin') }}">Riggin</a>
                     </div>
                 </li>
                 <li class="desktop__servicio">

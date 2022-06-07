@@ -748,7 +748,12 @@ h1{
 .icon_log_out i:hover, .dropdown-menu li form button:hover{
     color: #888 !important;
 }
-.contenedor{                    
+/* .contenedor{                    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+} */
+.contenedor__img{                    
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

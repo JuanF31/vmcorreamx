@@ -23,13 +23,23 @@
                     <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="3500">
+                                <a href="{{ route('electrico') }}">
+                                    <img class="w-100" src="{{ asset('assets/banners/electrico.png') }}" alt="Imagen VMCORREA">
+                                </a>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3500">
+                                <a href="{{ route('mecanico') }}">
+                                    <img class="w-100"  src="{{ asset('assets/banners/mecanico.png') }}" alt="Imagen VMCORREA">
+                                </a>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3500">
                                 <a href="{{ route('automatizacion') }}">
                                     <img class="w-100" src="{{ asset('assets/banners/automatizacion.png') }}" alt="Imagen VMCORREA">
                                 </a>
                             </div>
                             <div class="carousel-item" data-bs-interval="3500">
                                 <a href="{{ route('industria') }}">
-                                    <img class="w-100"  src="{{ asset('assets/banners/Industria 4.0.png') }}" alt="Imagen VMCORREA">
+                                    <img class="w-100" src="{{ asset('assets/banners/Industria 4.0.png') }}" alt="Imagen VMCORREA">
                                 </a>
                             </div>
                             <div class="carousel-item" data-bs-interval="3500">
@@ -38,23 +48,13 @@
                                 </a>
                             </div>
                             <div class="carousel-item" data-bs-interval="3500">
-                                <a href="{{ route('mtto-gral') }}">
-                                    <img class="w-100" src="{{ asset('assets/banners/Mtto general.png') }}" alt="Imagen VMCORREA">
-                                </a>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3500">
-                                <a href="{{ route('mtto-industrial') }}">
-                                    <img class="w-100" src="{{ asset('assets/banners/mtto industrial.png') }}" alt="Imagen VMCORREA">
+                                <a href="{{ route('seguridad-industrial') }}">
+                                    <img class="w-100" src="{{ asset('assets/banners/Seguridad Industrial.png') }}" alt="Imagen VMCORREA">
                                 </a>
                             </div>
                             <div class="carousel-item" data-bs-interval="3500">
                                 <a href="{{ route('riggin') }}">
                                     <img class="w-100" src="{{ asset('assets/banners/riggin.png') }}" alt="Imagen VMCORREA">
-                                </a>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3500">
-                                <a href="{{ route('seguridad-industrial') }}">
-                                    <img class="w-100" src="{{ asset('assets/banners/Seguridad Industrial.png') }}" alt="Imagen VMCORREA">
                                 </a>
                             </div>
                         </div>

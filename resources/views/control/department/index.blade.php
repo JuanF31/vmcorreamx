@@ -9,9 +9,24 @@
 
     <!-- Home section -->
     <div class="seccion__body">
-        @include('fragment._header')
 
-        <div class="container profile-page pt-5">
+    <!-- header -->
+    <header class="header__container">
+        <div class="barra">
+            <div class="btn__menu" id="btn__abrir">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        
+        <div class="flex__box" data-aos="fade-up">
+            @if ($department->banner)
+            <img src="{{ asset('assets/banners/' . $department->banner) }}"  alt="Banner {{$department->name}}">                
+            @endif
+        </div>
+    </header>
+    <!-- End header -->
+
+        <div class="container profile-page pt-5" data-aos="fade-up">
         
             <style>
                 .blue {

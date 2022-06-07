@@ -33,7 +33,7 @@
                             {{-- <i class="fa-solid fa-arrow-right-from-bracket"></i> --}}
                         </div>
                         <div class="col-12 p-5 pt-0">
-                            <div class="contenedor">
+                            <div class="contenedor__img">
                                 <div class="icono-cabecera">
                                     <img src="{{ asset('assets/profiles/' . Auth::user()->profile_avatar) }}" alt="Avatar profile {{ Auth::user()->name . ' ' . Auth::user()->lastname_d . ' ' . Auth::user()->lastname_m }}" class="icono-valores">
                                 </div>

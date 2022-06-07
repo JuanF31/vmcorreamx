@@ -42,11 +42,15 @@ class DepartmentController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+
         $data['icon'] = $fillename = Str::slug('icon departamento' . ' ' . $data['name'], '-') . "." . $data['icon']->extension();
-        $data['slug'] = Str::slug('departamento' . ' ' . $data['name'], '-');
         $img_status = $request->icon->move(public_path("assets/icons-departments"), $fillename);
 
-        if($img_status){
+        $data['banner'] = $baner_name = Str::slug('banner departamento' . ' ' . $data['name'], '-') . "." . $data['banner']->extension();
+        $banner_status = $request->banner->move(public_path("assets/banners"), $baner_name);
+
+        $data['slug'] = Str::slug('departamento' . ' ' . $data['name'], '-');
+        if($img_status && $banner_status){
             $response = Department::create($data);
             if($response != null){
                 return redirect()->route('departments.index')->with('status', 'Departamento creado con exito!');
@@ -86,6 +90,16 @@ class DepartmentController extends Controller
                 }
             }
         }
+        if(isset($data['banner'])){
+            $banner = public_path() . "/assets/banners/" . $department->banner;
+            $data["banner"] = $banner_name = Str::slug('banner departamento' . ' ' . $data['name'], '-') . '-' .time() . "." . $data['banner']->extension();
+            $banner_status = $request->banner->move(public_path("assets/banners/"), $banner_name);
+            if($banner_status){
+                if(@getimagesize($banner)){
+                    unlink($banner);
+                }
+            }
+        }
         $response = $department->update($data);
         if($response){
             return redirect()->route('departments.index')->with('status', 'Departamento actualizado con exito!');
@@ -102,10 +116,14 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
         $img = public_path() . "/assets/icons-departments/" . $department->icon;
+        $banner = public_path() . "/assets/banners/" . $department->banner;
         $response = $department->delete();
         if($response){
             if(@getimagesize($img)){
                 unlink($img);
+            }
+            if(@getimagesize($banner)){
+                unlink($banner);
             }
             return redirect()->route('departments.index')->with('status', 'Departamento eliminado con exito!');
         }

@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('name', 30);
             $table->string('slug')->unique();
             $table->string('icon');
+            $table->string('banner')->nullable();
             $table->timestamps();
         });
     }

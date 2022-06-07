@@ -26,6 +26,7 @@ class PutRequest extends FormRequest
         return [
             'name' => 'required|string|max:50|unique:departments,slug,' . $this->route('department')->id,
             'icon' => 'mimes:jpeg,jpg,png|max:10240',
+            'banner' => 'mimes:jpeg,jpg,png|max:10240',
         ];
     }
 }

@@ -17,14 +17,23 @@
                     <table class="table-auto" style="background: #212121">
                         <tr>
                             <th>Nombre</th>
-                            <th>Imagen</th>
+                            <th>Icono</th>
+                            <th>Banner</th>
+                            <th>Acciones</th>
                         </tr>
                     
                         @forelse ($departments as $department)
                             <tr>
                                 <td style="color: #fff">{{ $department->name }}</td>
                                 <td> <center><img src="{{ asset('assets/icons-departments/' . $department->icon ) }}" width="10%" alt=""></center></td>
-
+                                <td>
+                                    <center>
+                                        @if ($department->banner)
+                                            <img src="{{ asset('assets/banners/' . $department->banner) }}" alt="Banner departamento {{$department->name}}" width="40%">
+                                        @endif
+                                        &nbsp;
+                                    </center>
+                                </td>
                                 <td>
                                     <a style="color: #fff" class="mt-2 btn btn-primary" href="{{ route('departments.edit', $department) }}">Editar</a>
                                     <form action="{{ route('departments.destroy', $department) }}" method="POST">
