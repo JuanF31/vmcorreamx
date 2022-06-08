@@ -1,5 +1,6 @@
 let txtSearch = document.querySelector('#searcher')
 let app = document.querySelector('#app')
+let formSearch = document.querySelector('#searchForm')
 
 const search = (query) => {
     fetch('http://192.168.1.67/vmcorrea/public/api/control/users/search', {
@@ -33,7 +34,8 @@ const search = (query) => {
                         })
                     html += `</ul>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert">
+                </button>
             </div>`
             app.innerHTML = html
         }).catch(error => console.error(error))
@@ -45,4 +47,11 @@ txtSearch.onkeyup = ( e ) => {
     search(form)
     app.innerHTML = ''
 }
+
+
+formSearch.onkeypress = ( e ) => {
+    let tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==13) return false;
+}
+
 

@@ -11,11 +11,7 @@
 
         <!-- header -->
         <header class="header__container">
-            <div class="barra">
-                <div class="btn__menu" id="btn__abrir">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
+            @include('fragment._menu-simple-responsive')
 
             <div class="flex__box" data-aos="fade-up">
                 <img src="assets/banners/Banner_proyectos.png" alt="Banner Nosotros">

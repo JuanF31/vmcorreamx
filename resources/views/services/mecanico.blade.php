@@ -11,12 +11,7 @@
     <div class="seccion__body">
         <!-- header -->
         <header class="header__container">
-            <div class="barra">
-                <div class="btn__menu" id="btn__abrir">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
-
+            @include('fragment._menu-simple-responsive')
             <div class="flex__box" data-aos="fade-up">
                 <img src="{{ asset('assets/banners/Banner_Servicio_Mecanico.png') }}"  alt="Banner Mecánico">
             </div>

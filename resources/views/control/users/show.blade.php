@@ -9,8 +9,8 @@
 
     <!-- Home section -->
     <div class="seccion__body">
-
-        @include('fragment._header')
+        @include('fragment._menu-compuesto-responsive')
+        
         <p class="fs-1">
             @if ($user->lada && $user->phone_number)
             <a class="blue" href="https://wa.me/{{ $user->lada . $user->phone_number }}?text=Buen día {{ $user->name . ' ' . $user->lastname_d }}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>               
@@ -20,7 +20,6 @@
         @endif
             
         </p>
-        <button onclick="history.back()">Atras</button>
         @if (isset($user->profile->digital_card))
             <img src="{{ asset('assets/digital-cards/' . $user->profile->digital_card)}}" alt="">
         @else

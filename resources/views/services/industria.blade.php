@@ -12,12 +12,7 @@
 
         <!-- header -->
         <header class="header__container">
-            <div class="barra">
-                <div class="btn__menu" id="btn__abrir">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
-
+            @include('fragment._menu-simple-responsive')
             <div class="slider__hero" data-aos="fade-up">
                 <img src="{{ asset('assets/banners/Banner_Servicio_Industria4.png') }}" alt="Banner Riggin">
             </div>

@@ -11,11 +11,8 @@
     <div class="seccion__body">
         <!-- header -->
         <header class="header__container">
-            <div class="barra">
-                <div class="btn__menu" id="btn__abrir">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
+
+            @include('fragment._menu-simple-responsive')
 
             <div class="slider__hero">
                 <!-- Carrousel -->

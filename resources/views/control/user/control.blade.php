@@ -9,7 +9,7 @@
 
     <!-- Home section -->
     <div class="seccion__body">
-        @include('fragment._header')
+        @include('fragment._menu-simple-responsive')
             <div class="row dashboard">
                 <div class="col-xl-3 col-lg-3 col-md-12 bg-dashboard panel">
                     <div class="row">

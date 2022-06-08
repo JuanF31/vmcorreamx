@@ -11,15 +11,7 @@
 
         <!-- header -->
         <header class="header__container">
-            <div class="barra">
-                <div class="btn__menu" id="btn__abrir">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
-
-            <div class="slider__hero">
-
-            </div>
+            @include('fragment._menu-simple-responsive')
         </header>
         <!-- End header -->
 
