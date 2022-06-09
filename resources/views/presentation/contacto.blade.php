@@ -4,11 +4,8 @@
 @endsection
 
 @section('content')
-    @include('fragment.sidebar')
-
     <!-- Home section -->
-    <div class="seccion__body bg-textura">
-
+    <div class="bg-textura">
         <!-- header -->
         <header class="header__container">
             @include('fragment._menu-simple-responsive')
@@ -96,10 +93,6 @@
             </div>
         </div>
         <!-- End body -->
-        @include('fragment.modal_menu')
-        @include('fragment.footer')
     </div>
     <!-- End Home section -->
-
-    
 @endsection

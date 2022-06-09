@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-    @include('fragment.sidebar')
-    <div class="seccion__body">
         <!-- header -->
         <header class="header__container">
             @include('fragment._menu-simple-responsive')
@@ -39,8 +37,4 @@
             </div>
         </div>
         <!-- End body -->
-        @include('fragment.modal_menu')
-        @include('fragment.footer')
-
-    </div>
 @endsection

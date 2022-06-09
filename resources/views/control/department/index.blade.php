@@ -5,91 +5,83 @@
 @endsection
 
 @section('content')
-    @include('fragment.sidebar')
-
-    <!-- Home section -->
-    <div class="seccion__body">
-
     <!-- header -->
     <header class="header__container">
         @include('fragment._menu-compuesto-responsive')
         
         <div class="flex__box" data-aos="fade-up">
-            @if ($department->banner)
-            <img src="{{ asset('assets/banners/' . $department->banner) }}"  alt="Banner {{$department->name}}">                
-            @endif
+            {!! ($department->banner) ? "<img src='" . asset('assets/banners/' . $department->banner) . "' alt='Banner" . $department->name . "'>" : '' !!}
         </div>
     </header>
     <!-- End header -->
-
-        <div class="container profile-page pt-5" data-aos="fade-up">
+    <div class="container profile-page pt-5" data-aos="fade-up">
         
             <style>
                 .blue {
-    color: var(--azul__primario);
-}
-.m-t-5{
-    margin-top: 5px;   
-}
-.card {
-    background: #fff;
-    margin-bottom: 30px;
-    transition: .5s;
-    border: 0;
-    border-radius: .1875rem;
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    box-shadow: none;
-}
-.card .body {
-    font-size: 14px;
-    color: #424242;
-    padding: 20px;
-    font-weight: 400;
-}
-.profile-page .profile-header {
-    position: relative
-}
+                    color: var(--azul__primario);
+                }
+                .m-t-5{
+                    margin-top: 5px;   
+                }
+                .card {
+                    background: #fff;
+                    margin-bottom: 30px;
+                    transition: .5s;
+                    border: 0;
+                    border-radius: .1875rem;
+                    display: inline-block;
+                    position: relative;
+                    width: 100%;
+                    box-shadow: none;
+                }
+                .card .body {
+                    font-size: 14px;
+                    color: #424242;
+                    padding: 20px;
+                    font-weight: 400;
+                }
+                .profile-page .profile-header {
+                    position: relative
+                }
 
-.profile-page .profile-header .profile-image img {
-    border-radius: 50%;
-    width: 140px;
-    border: 3px solid #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
-}
+                .profile-page .profile-header .profile-image img {
+                    border-radius: 50%;
+                    width: 140px;
+                    border: 3px solid #fff;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+                }
 
-.profile-page .profile-header .social-icon a {
-    margin: 0 5px
-}
+                .profile-page .profile-header .social-icon a {
+                    margin: 0 5px
+                }
 
-.profile-page .profile-sub-header {
-    min-height: 60px;
-    width: 100%
-}
+                .profile-page .profile-sub-header {
+                    min-height: 60px;
+                    width: 100%
+                }
 
-.profile-page .profile-sub-header ul.box-list {
-    display: inline-table;
-    table-layout: fixed;
-    width: 100%;
-    background: #eee
-}
+                .profile-page .profile-sub-header ul.box-list {
+                    display: inline-table;
+                    table-layout: fixed;
+                    width: 100%;
+                    background: #eee
+                }
 
-.profile-page .profile-sub-header ul.box-list li {
-    border-right: 1px solid #e0e0e0;
-    display: table-cell;
-    list-style: none
-}
+                .profile-page .profile-sub-header ul.box-list li {
+                    border-right: 1px solid #e0e0e0;
+                    display: table-cell;
+                    list-style: none
+                }
 
-.profile-page .profile-sub-header ul.box-list li:last-child {
-    border-right: none
-}
+                .profile-page .profile-sub-header ul.box-list li:last-child {
+                    border-right: none
+                }
 
-.profile-page .profile-sub-header ul.box-list li a {
-    display: block;
-    padding: 15px 0;
-    color: #424242
-}
+                .profile-page .profile-sub-header ul.box-list li a {
+                    display: block;
+                    padding: 15px 0;
+                    color: #424242
+                }
             </style>
 
             <div class="row">
@@ -127,16 +119,11 @@
                     <h2>No hay asociados en el departamento de {{$department->name}}</h2>
                 @endforelse
             </div>
-        </div>
-        
-        @include('fragment.modal_menu')
-        {{-- @include('fragment._footer-mundovmc') --}}
     </div>
     <!-- End body -->
-
-    @section('script')
-        <script src="{{ asset('js/buscador.js') }}"></script>
-    @endsection
+@endsection
+@section('script')
+<script src="{{ asset('js/buscador.js') }}"></script>
 @endsection
 
 

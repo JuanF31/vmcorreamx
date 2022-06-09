@@ -5,10 +5,6 @@
 @endsection
 
 @section('content')
-    @include('fragment.sidebar')
-
-    <!-- Home section -->
-    <div class="seccion__body">
         <!-- header -->
         <header class="header__container">
             @include('fragment._menu-simple-responsive')
@@ -39,7 +35,7 @@
                                     <img src="{{ asset('assets/icons/mecanico.png') }}" loading="lazy" class="rounded" alt="Riggin" width="60%">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row pt-4">
                                 <div class="col-lg-12 col-sm-12" data-aos="fade-up">
                                     <h5 class="position-relative d-inline-block text-uppercase text__subheading pt-2">
                                         Nuestro Objetivo
@@ -63,10 +59,4 @@
             </div>
         </div>
         <!-- End main section -->
-        @include('fragment.modal_menu')
-        @include('fragment.footer')
-
-    </div>
-    <!-- End Home section -->
-
 @endsection

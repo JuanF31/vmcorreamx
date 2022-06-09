@@ -25,7 +25,7 @@ Route::get('/', function () {
     return view('presentation.index');
 })->name('inicio');
 
-Route::get('/aviso-privacidad', function(){
+Route::get('/aviso-de-privacidad', function(){
     return view('presentation.aviso_privacidad');
 })->name('aviso');
 

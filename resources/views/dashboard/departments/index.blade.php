@@ -14,7 +14,7 @@
                         @if (session('status'))
                             {{ session('status') }}
                         @endif
-                    <table class="table-auto" style="background: #212121">
+                    <table class="table-bordered caption-top" style="background: #212121">
                         <tr>
                             <th>Nombre</th>
                             <th>Icono</th>

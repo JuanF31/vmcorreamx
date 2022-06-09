@@ -4,21 +4,14 @@
 @endsection
 
 @section('content')
-    @include('fragment.sidebar')
-
-    <!-- Home section -->
-    <div class="seccion__body">
-
         <!-- header -->
         <header class="header__container">
             @include('fragment._menu-simple-responsive')
-
             <div class="flex__box" data-aos="fade-up">
                 <img src="{{ asset('assets/banners/Banner_Catalogos.png') }}" alt="Banner Catálogos">
             </div>
         </header>
         <!-- End header -->
-
         <!-- Main section or body -->
         <div class="body__container">
             <main class="main mb__mobile">
@@ -101,11 +94,4 @@
             </main>
         </div>
         <!-- End body -->
-        @include('fragment.modal_menu')
-        @include('fragment.footer')
-    </div>
-    <!-- End Home section -->
-
-
-    
 @endsection

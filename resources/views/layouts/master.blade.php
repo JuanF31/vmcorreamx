@@ -22,7 +22,18 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
 </head>
 <body>
-    @yield('content')
+    @include('fragment.sidebar')
+    <div class="seccion__body">
+        @yield('content')
+        @include('fragment.modal_menu')
+    
+        @includeWhen(
+            request()->route()->getName() != 'control' && 
+            request()->route()->getName() != 'user.index' &&
+            request()->route()->getName() != 'departments.show' &&
+            request()->route()->getName() != 'user.show'
+        , 'fragment.footer')
+    </div>
 
     {{-- Jquery --}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
