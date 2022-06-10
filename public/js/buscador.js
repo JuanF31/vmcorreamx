@@ -9,7 +9,6 @@ const search = (query) => {
     })
         .then(response => response.json())
         .then(data => {
-            app.innerHTML = ''
             let html = 
             `
             <div class="mt-4 m-3 alert alert-dismissible fade show border-blue" role="alert">        
@@ -48,7 +47,6 @@ txtSearch.onkeyup = ( e ) => {
     e.preventDefault()
     form = new FormData(searchForm)    
     search(form)
-    app.innerHTML = ''
 }
 
 

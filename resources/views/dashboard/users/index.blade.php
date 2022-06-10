@@ -15,8 +15,8 @@
                             {{ session('status') }}
                         @endif --}}
                         {{ session('status') ? session('status') : '' }}
-                    <div class="overflow-y">
-                        <table class="table table-bordered caption-top">
+                    <div class="">
+                        <table class="">
                             <tr>
                                 <th>Nombre</th>
                                 <th>Nombre de usuario</th>

@@ -32,6 +32,9 @@ img{
     max-width: 100%;
 }
 /* ==== Utilidades ==== */
+.text-blue {
+    color: var(--azul__primario);
+}
 .bg-blue{
     background-color: var(--azul__primario);
 }
@@ -1144,5 +1147,81 @@ h1{
     padding: 0 6px;
 }
 } */
+.card-profile{
+    position: relative;
+    background: var(--blanco);
+    border-radius: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}  
+.card-profile::before{
+    content: "";
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    background: var(--azul__primario);
+    border-radius: 2rem 2rem 0 0;
+}  
+.card-profile .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    position: relative;
+    z-index: 100;
+}  
+.card-section .card-profile .image{
+    height: 14rem;
+    width: 14rem;
+    border-radius: 50%;
+    padding: .3rem;
+    background: var(--azul__secudario);
+}  
+.card-section .card-profile .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: .3rem solid var(--azul__terciario);
+}  
+.card-profile .media-icons{
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-profile .media-icons i{
+    font-size: 2rem;
+    color: var(--azul__terciario);
+    opacity: 0.6;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}  
+.card-profile .media-icons i:hover{
+    opacity: 1;
+}  
+.card-profile .name-profession{
+    flex-direction: column;
+    align-items: center;
+}   
+.name-profession .name-profile{
+    margin-top: 1rem;
+    margin-block-end: 0 !important;
+    text-align: center;
+    font-size: 2.4rem;
+}
+
+.name-profession .profession, .email-profile a{
+    margin-block-end: 0 !important;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+
 
 .block-scroll {overflow:hidden;}
