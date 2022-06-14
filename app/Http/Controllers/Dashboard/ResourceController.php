@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Department;
 use App\Models\Resource;
+use App\Models\Department;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Resource\StoreRequest;
 
 class ResourceController extends Controller
 {
@@ -14,10 +17,10 @@ class ResourceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Department $department)
     {
-        $resources = Resource::all();
-        return view('dashboard.resources.index', compact('resources'));
+        $resources = Resource::where('department_id', $department->id)->paginate(5);
+        return view('dashboard.resources.index', compact('department', 'resources'));
     }
 
     /**
@@ -25,12 +28,10 @@ class ResourceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Department $department)
     {
-        $departments = Department::all();
         $resource = new Resource();
-
-        return view('dashboard.resources.create', compact('departments', 'resource'));
+        return view('dashboard.resources.create', compact('department', 'resource'));
     }
 
     /**
@@ -39,12 +40,32 @@ class ResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request, Department $department)
     {
-        $depas = [$request->id_department];
-        foreach($depas as $key){
-            return intval($key);
+        $data = $request->all();
+        $extension = $request->file('resource')->guessExtension();
+        if($extension == 'png' || $extension == 'jpg'|| $extension == 'svg'|| $extension == 'jpeg'|| $extension == 'gif'){
+            $data['type'] = 'image';
+        }else if($extension == 'doc' || $extension == 'docx' || $extension == 'docm'){
+            $data['type'] = 'text-document';
+        }else if($extension == 'ppt' || $extension == 'pptm' || $extension == 'pptx'){
+            $data['type'] = 'presentation-document';
+        }else if($extension == 'pdf'){
+            $data['type'] = 'pdf';
+        }else if($extension == 'zip' || $extension == 'rar'){
+            $data['type'] = 'font';
         }
+        $file_name = Str::slug($department->name .' '. $data['name_resource'] . ' ' . time(), '-') . '.' . $extension;
+        $data['resource'] = $file_name;
+        $data['department_id'] = $department->id;
+
+        $response = Resource::create($data);
+        
+        if($response){
+            $file = $request->file('resource')->storeAs('public/resources/'.$department->name, $file_name.'.'.$extension  ,'local');
+            if($file) return redirect()->route('resources.index', $department)->with('status', 'Recurso guardado con exito!');
+        }
+        return redirect()->route('resources.create', $department)->with('status', 'Oops!, algo salio mal');
     }
 
     /**
@@ -90,5 +111,10 @@ class ResourceController extends Controller
     public function destroy(Resource $resource)
     {
         //
+    }
+    public function share_resource(Resource $resource){
+        ///storage/app/public/resources/Comercial/comercial-fondo-de-pantalla-computadora-comercial-1655242286.png
+        $url = asset('assets/storage/resource/' . $resource->department->name . '/' . $resource->resource);
+        dd($url);
     }
 }

@@ -97,10 +97,10 @@
             </nav>
         </div>
     </div>
-        @include('fragment._footer-mundovmc')
+    @include('fragment._footer-mundovmc')
     <!-- End body -->
-    @include('control.organizational_chart.modalOrganitational')
 @endsection
+
 
 
 

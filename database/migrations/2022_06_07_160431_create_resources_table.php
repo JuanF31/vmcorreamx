@@ -17,8 +17,9 @@ class CreateResourcesTable extends Migration
             $table->id();
             $table->string('name_resource');
             $table->string('slug')->unique();
-            $table->enum('type', ['pdf', 'image', 'font']);
+            $table->enum('type', ['pdf', 'image', 'font', 'text-document', 'presentation-document']);
             $table->text('resource');
+            $table->enum('published', ['yes', 'not'])->default('not');
             $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

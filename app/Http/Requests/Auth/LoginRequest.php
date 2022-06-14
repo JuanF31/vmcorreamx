@@ -21,6 +21,13 @@ class LoginRequest extends FormRequest
         return true;
     }
 
+    public function messages()
+    {
+        return[
+            'username.required' => 'Por favor ingrese su nombre de usuario',
+            'password.required' => 'Por favor ingrese su contraseña'
+        ];
+    }
     /**
      * Get the validation rules that apply to the request.
      *

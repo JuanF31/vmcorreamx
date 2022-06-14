@@ -1048,12 +1048,12 @@ h1{
 .border-blue{
     border: .2rem solid var(--azul__primario);
 }
-.alert{
+.custom-alert{
     padding: 0 !important;
 }
-.alert-dismissible{
+/* .custom-alert-dismissible{
     padding-right: 0 !important;
-}
+} */
 .link-profile a{
     text-decoration: none;
 }

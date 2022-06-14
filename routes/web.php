@@ -86,7 +86,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     Route::resource('directories', DirectoryController::class)->except('show');
     Route::resources([
         'users' => UserController::class,
-        'resources' => ResourceController::class,
     ]);
     Route::get('profile/{user}/edit', [ProfileController::class, 'add_digital_card'])->name('profile.card');
     Route::post('profile/{user}/update', [ProfileController::class, 'register_digital_card'])->name('profile.card.update');
@@ -94,6 +93,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     Route::get('change-password/{user}/edit', [UserController::class, 'edit_password'])->name('password-change.edit');
     Route::put('change-password/{user}', [UserController::class, 'update_password'])->name('password-change.update');
     Route::put('directories/{directory}/change-status', [DirectoryController::class, 'change_status'])->name('directories.change-status');
+    Route::resource('resources', ResourceController::class)->except('show');
+    Route::get('resources/{department}/show', [ResourceController::class, 'index'])->name('resources.index');
+    Route::get('resources/{department}/create', [ResourceController::class, 'create'])->name('resources.create');
+    Route::post('resources/{department}/store', [ResourceController::class, 'store'])->name('resources.store');
+    Route::get('resources/{resource}/share', [ResourceController::class, 'share_resource'])->name('resources.share');
 });
 
 Route::group(['prefix' => 'control', 'middleware' => ['auth', 'user']], function(){

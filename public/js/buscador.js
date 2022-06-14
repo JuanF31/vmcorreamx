@@ -11,7 +11,7 @@ const search = (query) => {
         .then(data => {
             let html = 
             `
-            <div class="mt-4 m-3 alert alert-dismissible fade show border-blue" role="alert">        
+            <div class="mt-4 m-3 alert custom-alert alert-dismissible fade show border-blue" role="alert">        
                 <div class="card" style="width: 100%;">
                     <div class="card-header bg-blue text-white">
                         Resultados de la busqueda

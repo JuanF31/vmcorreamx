@@ -27,9 +27,6 @@
                     <x-nav-link :href="route('directories.index')" :active="request()->routeIs('directories.index')">
                         {{ __('Directorio') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('resources.index')" :active="request()->routeIs('resources.index')">
-                        {{ __('Recursos') }}
-                    </x-nav-link>
                 </div>
             </div>
 

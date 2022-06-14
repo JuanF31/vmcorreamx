@@ -14,7 +14,8 @@ class Resource extends Model
         'slug',
         'type',
         'resource',
-        'department_id'
+        'department_id',
+        'published'
     ];
     public function department(){
         return $this->belongsTo(Department::class);

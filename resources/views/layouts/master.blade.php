@@ -34,6 +34,7 @@
             request()->route()->getName() != 'user.show'
         , 'fragment.footer')
     </div>
+    @includeWhen(request()->route()->getName() == 'control', 'control.organizational_chart.modalOrganitational')
 
     {{-- Jquery --}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>

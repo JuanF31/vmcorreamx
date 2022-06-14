@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Los datos no se encuentran registrados.',
+    'failed' => 'Usuario o contraseña incorrectos.',
     'throttle' => 'Demasiados intentos de acceso. Por favor inténtelo de nuevo en :seconds segundos.',
 
 ];
