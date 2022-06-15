@@ -26,11 +26,11 @@
             </div>
         </header>
         
-        @if (session('status'))
-            {{ session('status') }}
-        @endif
         <div class="container mx-auto">
             <div class="card card-white mt-4">
+                <div class="mb-4">
+                    {{ (session('status')) ? session('status') : "" }}
+                </div>
                 @yield('content')
             </div>
         </div>

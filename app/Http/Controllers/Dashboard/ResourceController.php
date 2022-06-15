@@ -62,7 +62,7 @@ class ResourceController extends Controller
         $response = Resource::create($data);
         
         if($response){
-            $file = $request->file('resource')->storeAs('public/resources/'.$department->name, $file_name.'.'.$extension  ,'local');
+            $file = $request->file('resource')->storeAs('public/resources/'.strtolower($department->name), $file_name, 'local');
             if($file) return redirect()->route('resources.index', $department)->with('status', 'Recurso guardado con exito!');
         }
         return redirect()->route('resources.create', $department)->with('status', 'Oops!, algo salio mal');
@@ -112,9 +112,11 @@ class ResourceController extends Controller
     {
         //
     }
-    public function share_resource(Resource $resource){
-        ///storage/app/public/resources/Comercial/comercial-fondo-de-pantalla-computadora-comercial-1655242286.png
-        $url = asset('assets/storage/resource/' . $resource->department->name . '/' . $resource->resource);
-        dd($url);
+    public function download_resource(Resource $resource)
+    {
+        if (Storage::disk('local')->exists('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource)) {
+            return Storage::download('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource);
+        }
+        return back()->with('status', 'No se encontro el recurso solicitado');
     }
 }

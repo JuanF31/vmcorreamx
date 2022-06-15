@@ -66,11 +66,14 @@
                     <td class="px-6 py-4 text-xl font-extrabold">
                         @switch($resource->type)
                             @case('pdf')
-                                <a href="{{ route('resources.share', $resource) }}"><i class="fa-solid fa-file-pdf"></i></a>
+                                <a href="{{ Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource) }}" target="_blank">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </a>
                             @break
                             @case('image')
-                                <i class="fa-solid fa-image"></i>
-                                <img src="{{ asset('storage/resource/Comercial/' . $resource->resource) }}" alt="" width="30">
+                                <a href="{{ Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource) }}" target="_blank">
+                                    <i class="fa-solid fa-image"></i>
+                                </a>
                             @break
                             @case('font')
                                 <i class="fa-solid fa-font"></i>
@@ -85,7 +88,6 @@
                                 <i class="fa-solid fa-circle-question"></i>
                             @break
                         @endswitch
-                        {{-- {{ $resource->resource }} --}}
                     </td>
                     <td class="px-6 py-4">
                         {{ ($resource->published == 'yes') ? 'Si' : 'No'  }}
@@ -94,7 +96,7 @@
                         {{ date("d-m-Y", strtotime($resource->created_at)) }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ __('Aqui iran las acciones') }}
+                        <a href="{{ route('resources.download', $resource) }}">Descargar</a>
                     </td>
                     {{-- <td class="px-6 py-4">
                         <a href="{{ route('users.show', $user) }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Detalles</a>
