@@ -12,7 +12,7 @@ class PutRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->username . " " . time(), '-'),
+            'slug' => Str::slug($this->username . " " . time(), '-')
         ]);
     }
     /**

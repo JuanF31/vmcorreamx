@@ -66,23 +66,29 @@
                     <td class="px-6 py-4 text-xl font-extrabold">
                         @switch($resource->type)
                             @case('pdf')
-                                <a href="{{ Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource) }}" target="_blank">
+                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
                                     <i class="fa-solid fa-file-pdf"></i>
                                 </a>
                             @break
                             @case('image')
-                                <a href="{{ Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource) }}" target="_blank">
+                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
                                     <i class="fa-solid fa-image"></i>
                                 </a>
                             @break
                             @case('font')
-                                <i class="fa-solid fa-font"></i>
+                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                    <i class="fa-solid fa-font"></i>
+                                </a>
                             @break
                             @case('text-document')
-                                <i class="fa-solid fa-file-word"></i>
+                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                    <i class="fa-solid fa-file-word"></i>
+                                </a>
                             @break
                             @case('presentation-document')
-                                <i class="fa-regular fa-file-powerpoint"></i>
+                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                    <i class="fa-regular fa-file-powerpoint"></i>
+                                </a>
                             @break
                             @default
                                 <i class="fa-solid fa-circle-question"></i>
@@ -95,16 +101,21 @@
                     <td class="px-6 py-4">
                         {{ date("d-m-Y", strtotime($resource->created_at)) }}
                     </td>
-                    <td class="px-6 py-4">
-                        <a href="{{ route('resources.download', $resource) }}">Descargar</a>
+                    <td class="px-6 py-4 text-xl font-extrabold">
+                        <a href="{{ route('resources.download', $resource) }}"><i class="fa-solid fa-download"></i></a>
+                        <a href="{{ route('resources.edit', $resource) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href=""></a>
+                        <form action="{{ route('resources.destroy', $resource) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                     {{-- <td class="px-6 py-4">
                         <a href="{{ route('users.show', $user) }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Detalles</a>
-                        <form action="{{ route('users.destroy', $user) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Eliminar</button>
-                        </form>
+
                         <a href="{{ route('users.edit', $user) }}" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Editar</a>
                         <a href="{{ route('profile.card', $user) }}" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Perfil</a>
                         <a href="{{ route('password-change.edit', $user) }}" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Contraseña</a>

@@ -1010,12 +1010,12 @@ h1{
     padding: 1rem;
 }
 
-.searchBox:hover form > .searchInput {
+.searchBox:hover div > .searchInput {
     width: 24rem;
     padding: 0 .6rem;
 }
 
-.searchBox:hover form > .searchButton {
+.searchBox:hover div > .searchButton {
     background: white;
     color : var(--azul__primario);
 }

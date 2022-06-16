@@ -9,7 +9,7 @@
         <header class="header__container">
             @include('fragment._menu-compuesto-responsive')
             <div class="flex__box" data-aos="fade-up">
-                <img src="{{ asset('assets/banners/banner-departamento-administrativo-1654642030.png') }}" >                
+                <img src="{{ asset('assets/banners/Banner_departamentos.png') }}" >                
             </div>    
         </header>
         <!-- End header -->
@@ -18,12 +18,12 @@
 
             <div class="d-flex justify-content-end pt-0 p-3 pb-5">
                 <div class="searchBox">
-                    <form id="searchForm">
+                    <div id="searchForm">
                         <input autocomplete="off" class="searchInput" type="text" name="searcher" id="searcher" placeholder="Buscar">
                         <div class="searchButton">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             
@@ -31,7 +31,7 @@
 
             </div>
 
-            <div class="row text-center pt-2">
+            <div class="row text-center pt-2 pb-5">
                 @forelse ($departments as $department)
                     <div class="col-xl-4 col-sm-12 col-md-12 rounded p-3">
                         <a href="{{ route('departments.show', $department) }}" class="card  carta-servicio">

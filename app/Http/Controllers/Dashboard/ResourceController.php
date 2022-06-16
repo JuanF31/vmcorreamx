@@ -7,6 +7,7 @@ use App\Models\Department;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Resource\PutRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Resource\StoreRequest;
 
@@ -69,17 +70,6 @@ class ResourceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Resource  $resource
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Resource $resource)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Resource  $resource
@@ -87,7 +77,7 @@ class ResourceController extends Controller
      */
     public function edit(Resource $resource)
     {
-        //
+        return view('dashboard.resources.edit', compact('resource'));
     }
 
     /**
@@ -97,9 +87,37 @@ class ResourceController extends Controller
      * @param  \App\Models\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resource $resource)
+    public function update(PutRequest $request, Resource $resource)
     {
-        //
+        if($request->hasFile('resource')){
+            if(Storage::disk('local')->exists('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource)){
+                Storage::disk('local')->delete('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource);
+            }
+            $data = $request->all();
+            $extension = $request->file('resource')->guessExtension();
+            if($extension == 'png' || $extension == 'jpg'|| $extension == 'svg'|| $extension == 'jpeg'|| $extension == 'gif'){
+                $data['type'] = 'image';
+            }else if($extension == 'doc' || $extension == 'docx' || $extension == 'docm'){
+                $data['type'] = 'text-document';
+            }else if($extension == 'ppt' || $extension == 'pptm' || $extension == 'pptx'){
+                $data['type'] = 'presentation-document';
+            }else if($extension == 'pdf'){
+                $data['type'] = 'pdf';
+            }else if($extension == 'zip' || $extension == 'rar'){
+                $data['type'] = 'font';
+            }
+            $file_name = Str::slug($resource->department->name .' '. $data['name_resource'] . ' ' . time(), '-') . '.' . $extension;
+            $data['resource'] = $file_name;
+            $response = $resource->update($data);
+
+            if($response){
+                $file = $request->file('resource')->storeAs('public/resources/'.strtolower($resource->department->name), $file_name, 'local');
+                if($file) return redirect()->route('resources.index', $resource->department)->with('status', 'Recurso actualizado con exito!');
+            }
+        }else{
+            if($resource->update($request->all())) return redirect()->route('resources.index', $resource->department)->with('status', 'Recurso actualizado con exito!');
+        }
+        return redirect()->route('resources.create', $resource->department)->with('status', 'Oops!, algo salio mal');
     }
 
     /**
@@ -110,7 +128,14 @@ class ResourceController extends Controller
      */
     public function destroy(Resource $resource)
     {
-        //
+        $response = $resource->delete();
+        if($response){
+            if(Storage::disk('local')->exists('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource)){
+                Storage::disk('local')->delete('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource);
+            }
+            return back()->with('status', 'Recurso eliminado');
+        }
+        return back()->with('status', 'Oops!, algo salio mal');
     }
     public function download_resource(Resource $resource)
     {

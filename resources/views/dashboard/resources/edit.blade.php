@@ -1,10 +1,31 @@
-<x-app-layout>
+@extends('dashboard.layout')
+
+@section('title')
+    <title>MundoVMC · Editar Recurso - {{$resource->name_resource}}</title>
+@endsection
+
+@section('header')
+    <p class="text-xl">Editar Recurso - {{$resource->name_resource}}</p>
+@endsection
+
+@section('content')
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <form method="POST" action="{{ route('resources.update', $resource) }}" enctype="multipart/form-data" >
+        @method('PUT')
+        @include('dashboard.resources._form')
+    </form>
+</div>    
+@endsection
+
+{{-- <x-app-layout>
     <x-slot name="header">
         <img src="{{ asset('assets/icons-departments/' . $department->icon) }}" width="5%" alt="">
         <img src="{{ asset('assets/banners/' . $department->banner) }}" width="10%" alt="">
 
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar departamento') . ' - ' . $department->name}}
+            {{ __('Editar recurso') . ' - ' . $department->name}}
         </h2>
     </x-slot>
 
@@ -30,4 +51,4 @@
 
 
 
-
+ --}}

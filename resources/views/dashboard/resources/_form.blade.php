@@ -8,7 +8,7 @@
 <!-- Nombre -->
 <div>
     <label for="resource">Recurso</label>
-    <input type="file" id="resource" class="block mt-1 w-full" name="resource" required autofocus/>
+    <input type="file" id="resource" class="block mt-1 w-full" name="resource" autofocus/>
 </div>
 
 <!-- Nombre -->
