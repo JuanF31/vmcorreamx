@@ -31,7 +31,8 @@
             request()->route()->getName() != 'control' && 
             request()->route()->getName() != 'user.index' &&
             request()->route()->getName() != 'departments.show' &&
-            request()->route()->getName() != 'user.show'
+            request()->route()->getName() != 'user.show' &&
+            request()->route()->getName() != 'resource.department.show'
         , 'fragment.footer')
     </div>
     @includeWhen(request()->route()->getName() == 'control', 'control.organizational_chart.modalOrganitational')

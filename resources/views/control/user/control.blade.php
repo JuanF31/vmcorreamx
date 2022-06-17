@@ -88,7 +88,7 @@
             <nav class="button__dashboard">
                 <a class="btn mb-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalOrganigrama"><i class="fa-solid fa-sitemap"></i> Organigrama</a>
                 <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalDirectorio"><i class="fa-solid fa-users-line"></i> Directorio</a>
-                <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalRecursos"><i class="fa-solid fa-list"></i> Recursos</a>
+                <a href="{{ route('resource.department.show', Auth::user()->department->slug) }}" class="btn mb-5 mt-5 btn__option" ><i class="fa-solid fa-list"></i> Recursos</a>
                 <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalBoletin"><i class="fa-solid fa-folder-open"></i> Proyectos</a>
                 <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalAnuncios"><i class="fa-solid fa-bullhorn"></i> Anuncios</a>
                 <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalRevista"><i class="fa-solid fa-book-bookmark"></i> Revista</a>

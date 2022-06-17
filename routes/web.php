@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Control\PanelController;
+use App\Http\Controllers\Control\ResourceController as ControlResourceController;
 use App\Http\Controllers\Control\UserController as ControlUserController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\DirectoryController;
@@ -93,7 +94,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     Route::get('change-password/{user}/edit', [UserController::class, 'edit_password'])->name('password-change.edit');
     Route::put('change-password/{user}', [UserController::class, 'update_password'])->name('password-change.update');
     Route::put('directories/{directory}/change-status', [DirectoryController::class, 'change_status'])->name('directories.change-status');
-    Route::resource('resources', ResourceController::class)->only('destroy', 'edit');
+    Route::resource('resources', ResourceController::class)->only('destroy', 'edit', 'update');
     Route::get('resources/{department}/show', [ResourceController::class, 'index'])->name('resources.index');
     Route::get('resources/{department}/create', [ResourceController::class, 'create'])->name('resources.create');
     Route::post('resources/{department}/store', [ResourceController::class, 'store'])->name('resources.store');
@@ -104,6 +105,8 @@ Route::group(['prefix' => 'control', 'middleware' => ['auth', 'user']], function
     Route::get('/', [PanelController::class, 'show_data'])->name('control');
     Route::resource('user', ControlUserController::class)->only('index', 'show');
     Route::resource('departments', DepartmentController::class)->only('show');
+    Route::get('resource/{slug}/show', [ControlResourceController::class, 'index'])->name('resource.department.show');
+    Route::get('resource/{resource}/download', [ControlResourceController::class, 'download_resource'])->name('resource.download');
 });
 
 
