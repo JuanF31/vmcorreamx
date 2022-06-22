@@ -22,6 +22,17 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
 </head>
 <body>
+    <div class="loader-page">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center p-0 m-0">
+                <img src="{{ asset('assets/icons/loader.svg') }}" alt="" srcset="">
+            </div>
+            <div class="col-12 d-flex justify-content-center p-0 m-0">
+                <img src="{{ asset('assets/icons/loader-vmc.png') }}" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+
     @include('fragment.sidebar')
     <div class="seccion__body">
         @yield('content')
@@ -36,6 +47,8 @@
         , 'fragment.footer')
     </div>
     @includeWhen(request()->route()->getName() == 'control', 'control.organizational_chart.modalOrganitational')
+    @includeWhen(request()->route()->getName() == 'resource.department.show', 'control.resources.imgmodal')
+
 
     {{-- Jquery --}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>

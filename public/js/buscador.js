@@ -6,7 +6,7 @@ let formSearch = document.querySelector('#searchForm')
 
 const promise = (query) => {
     return new Promise((resolve, reject) => {
-        fetch('http://192.168.1.67/vmcorrea/public/api/control/users/search', {
+        fetch('http://192.168.1.130/vmcorrea/public/api/control/users/search', {
             method: "POST",
             headers: {
                 "Content-type" : "application/json; charset=utf-8"

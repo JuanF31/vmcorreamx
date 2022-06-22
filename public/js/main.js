@@ -1,3 +1,11 @@
+const timer = document.querySelector('.loader-page')
+window.onload = () => {
+    setTimeout(() => {
+        timer.style.visibility = "hidden"
+        timer.style.opacity = "0"
+    });
+}
+
 //Function that initial AOS
 AOS.init({
     duration: 1000
