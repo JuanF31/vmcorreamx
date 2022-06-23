@@ -2,7 +2,7 @@
     <x-slot name="header">
         <img src="{{asset('assets/profiles/' . $user->profile_avatar )}}" width="5%" alt="">     
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ $user->name . ' ' . $user->lastname_d . ' ' . $user->lastname_m}}
+            {{ $user->name . ' ' . $user->lastname_d . ' ' . $user->lastname_m}}
         </h2>
     </x-slot>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Control\PanelController;
 use App\Http\Controllers\Control\ResourceController as ControlResourceController;
 use App\Http\Controllers\Control\UserController as ControlUserController;
+use App\Http\Controllers\Dashboard\AdvertisementsController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\DirectoryController;
 use App\Http\Controllers\Dashboard\Organizational_chartController;
@@ -105,6 +106,7 @@ Route::group(['prefix' => 'control', 'middleware' => ['auth', 'user']], function
     Route::get('/', [PanelController::class, 'show_data'])->name('control');
     Route::resource('user', ControlUserController::class)->only('index', 'show');
     Route::resource('departments', DepartmentController::class)->only('show');
+    Route::resource('advertisement', AdvertisementsController::class)->only('index','show');
     Route::get('resource/{slug}/show', [ControlResourceController::class, 'index'])->name('resource.department.show');
     Route::get('resource/{resource}/download', [ControlResourceController::class, 'download_resource'])->name('resource.download');
 });

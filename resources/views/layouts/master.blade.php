@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+    @yield('css')
 </head>
 <body>
     <div class="loader-page">
@@ -43,7 +44,8 @@
             request()->route()->getName() != 'user.index' &&
             request()->route()->getName() != 'departments.show' &&
             request()->route()->getName() != 'user.show' &&
-            request()->route()->getName() != 'resource.department.show'
+            request()->route()->getName() != 'resource.department.show' &&
+            request()->route()->getName() != 'advertisement.index'
         , 'fragment.footer')
     </div>
     @includeWhen(request()->route()->getName() == 'control', 'control.organizational_chart.modalOrganitational')

@@ -67,7 +67,7 @@
                     <h4>Cursos <br> Disponibles</h4>
                 </div>
                 <div class="col-12 p-5">
-                    <h3 class="text-white">No hay nada para mostrar</h3>
+                    {{-- <h3 class="text-white">No hay nada para mostrar</h3> --}}
                     {{-- <a class="btn mb-4 mx-4 btn__course"><i class="fa-solid fa-thumbtack"></i> Google Analitics</a>
                     <a class="btn m-4 btn__course"><i class="fa-solid fa-thumbtack"></i> Facebook Business</a>
                     <a class="btn m-4 btn__course"><i class="fa-solid fa-thumbtack"></i> Marketing</a> --}}
@@ -75,24 +75,24 @@
             </div>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-12 p-5 panel flex__box">
-                    <div class="row">
-                        <div class="col-12 mt-5 mb-5 flex__box">
-                            <img src="{{ asset('assets/icons/logo-vmc-principal.png') }}" alt="Icono VMC" width="30%">
-                        </div>
-                        <div class="col-12 flex__box">
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/akAIv5pLJRY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-12 mt-5 mb-5 flex__box">
+                    <img src="{{ asset('assets/icons/logo-vmc-principal.png') }}" alt="Icono VMC" width="30%">
+                </div>
+                <div class="col-12 flex__box">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/akAIv5pLJRY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-12 p-5 bg-buttons d-flex justify-content-center align-items-center">
             <nav class="button__dashboard">
                 <a class="btn mb-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalOrganigrama"><i class="fa-solid fa-sitemap"></i> Organigrama</a>
-                <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalDirectorio"><i class="fa-solid fa-users-line"></i> Directorio</a>
+                {{-- <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal"><i class="fa-solid fa-users-line"></i> Directorio</a> --}}
                 <a href="{{ route('resource.department.show', Auth::user()->department->slug) }}" class="btn mb-5 mt-5 btn__option" ><i class="fa-solid fa-list"></i> Recursos</a>
-                <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalBoletin"><i class="fa-solid fa-folder-open"></i> Proyectos</a>
-                <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalAnuncios"><i class="fa-solid fa-bullhorn"></i> Anuncios</a>
-                <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalRevista"><i class="fa-solid fa-book-bookmark"></i> Revista</a>
-                <a class="btn mb-5 mt-5 btn__option" data-bs-toggle="modal" data-bs-target="#modalPlataformas"><i class="fa-solid fa-desktop"></i> Plataformas</a>                
+                <a class="btn mb-5 mt-5 btn__option"><i class="fa-solid fa-folder-open"></i> Proyectos</a>
+                <a href="{{ route('advertisement.index') }}" class="btn mb-5 mt-5 btn__option"><i class="fa-solid fa-bullhorn"></i> Anuncios</a>
+                <a class="btn mb-5 mt-5 btn__option"><i class="fa-solid fa-book-bookmark"></i> Revista</a>
+                <a class="btn mb-5 mt-5 btn__option"><i class="fa-solid fa-desktop"></i> Plataformas</a>                
                 <a href="{{ route('user.index') }}" class="btn mt-5"><i class="fa-solid fa-people-group"></i> Compañero VMC</a>
             </nav>
         </div>
