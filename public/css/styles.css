@@ -1307,7 +1307,7 @@ h1{
 }
 .container-resource .card-resource .box .content a:hover,
 .container-resource .card-resource .box .content div:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
     background: #1F365E;
     color: #ECF2FF;
 }
@@ -1315,7 +1315,7 @@ h1{
 /* Imagen Modal */
 /* Style the Image Used to Trigger the Modal */
 #myImg {
-    border-radius: 5px;
+    border-radius: .5rem;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -1327,7 +1327,7 @@ h1{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1000; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 10rem; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -1349,11 +1349,11 @@ h1{
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 70rem;
     text-align: center;
     color: #ccc;
-    padding: 10px 0;
-    height: 150px;
+    padding: 1rem 0;
+    height: 15rem;
 }
 
 /* Add Animation - Zoom in the Modal */
@@ -1370,10 +1370,10 @@ h1{
 /* The Close Button */
 .closemodalbox {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 1.5rem;
+    right: 3.5rem;
     color: #f1f1f1;
-    font-size: 40px;
+    font-size: 4rem;
     font-weight: bold;
     transition: 0.3s;
 }

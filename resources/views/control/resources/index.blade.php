@@ -9,8 +9,6 @@
         @include('fragment._menu-compuesto-responsive')
     </header>
 
-
-    
     <div class="container pt-5 pb-5">
         <div class="row pt-2">
             <div class="mb-4">

@@ -45,7 +45,7 @@
               </div>
             @endif
           @empty
-            <h2>No hay asociados en el departamento de Operaciones</h2>
+            <h2>No hay asociados en el departamento de {{ $department->name }}</h2>
           @endforelse
         </div>
     </div>

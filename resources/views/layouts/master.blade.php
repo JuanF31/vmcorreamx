@@ -50,6 +50,7 @@
     </div>
     @includeWhen(request()->route()->getName() == 'control', 'control.organizational_chart.modalOrganitational')
     @includeWhen(request()->route()->getName() == 'resource.department.show', 'control.resources.imgmodal')
+    @includeWhen(request()->route()->getName() == 'advertisement.index', 'control.advertisements.modalAd')
 
 
     {{-- Jquery --}}
