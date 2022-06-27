@@ -67,8 +67,8 @@
             <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
         
             <div class="slider-indicators">
-                @for ($i = 0; $i <= 10; $i++)
-                <button aria-label="Go to slide"></button>
+                @for ($i = 0; $i <= 5; $i++)
+                    <button aria-label="Go to slide"></button>
                 @endfor
             </div>
         </div>
