@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class AdvertisementsController extends Controller
@@ -15,8 +16,8 @@ class AdvertisementsController extends Controller
      */
     public function index()
     {
-        $ad = Advertisement::all();
-        return view('control.advertisements.index', compact('ad'));
+        $advertisements = Advertisement::all(['*']);
+        return view('dashboard.advertisements.index', compact('advertisements'));
     }
 
     /**
@@ -26,7 +27,9 @@ class AdvertisementsController extends Controller
      */
     public function create()
     {
-        //
+        $advertisement = new Advertisement();
+        $departments = Department::pluck('id', 'name');
+        return view('dashboard.advertisements.create', compact('departments', 'advertisement'));
     }
 
     /**

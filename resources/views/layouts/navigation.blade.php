@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('directories.index')" :active="request()->routeIs('directories.index')">
                         {{ __('Directorio') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('advertisements.index')" :active="request()->routeIs('advertisements.index')">
+                        {{ __('Avisos') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +80,21 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                {{ __('Usuarios') }}
+            </x-responsive-nav-link >
+            <x-responsive-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.index')">
+                {{ __('Departamentos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('organizational.index')" :active="request()->routeIs('organizations.index')">
+                {{ __('Organigrama') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link  :href="route('directories.index')" :active="request()->routeIs('directories.index')">
+                {{ __('Directorio') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link  :href="route('advertisements.index')" :active="request()->routeIs('advertisements.index')">
+                {{ __('Avisos') }}
             </x-responsive-nav-link>
         </div>
 

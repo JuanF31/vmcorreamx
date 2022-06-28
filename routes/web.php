@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Control\AdvertisementsController as ControlAdvertisementsController;
 use App\Http\Controllers\Control\PanelController;
 use App\Http\Controllers\Control\ResourceController as ControlResourceController;
 use App\Http\Controllers\Control\UserController as ControlUserController;
@@ -100,13 +101,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     Route::get('resources/{department}/create', [ResourceController::class, 'create'])->name('resources.create');
     Route::post('resources/{department}/store', [ResourceController::class, 'store'])->name('resources.store');
     Route::get('resources/{resource}/download', [ResourceController::class, 'download_resource'])->name('resources.download');
+    Route::resource('advertisements', AdvertisementsController::class)->except('show');
 });
 
 Route::group(['prefix' => 'control', 'middleware' => ['auth', 'user']], function(){
     Route::get('/', [PanelController::class, 'show_data'])->name('control');
     Route::resource('user', ControlUserController::class)->only('index', 'show');
     Route::resource('departments', DepartmentController::class)->only('show');
-    Route::resource('advertisement', AdvertisementsController::class)->only('index','show');
+    Route::resource('advertisement', ControlAdvertisementsController::class)->only('index');
     Route::get('resource/{slug}/show', [ControlResourceController::class, 'index'])->name('resource.department.show');
     Route::get('resource/{resource}/download', [ControlResourceController::class, 'download_resource'])->name('resource.download');
 });

@@ -73,18 +73,19 @@
             <div class="col-xl-5 col-sm-12 col-md-12 bg-white text-blue p-5 text-container">
                 <div class="d-flex">
                     <div class="circunferencia">
-                        <img class="p-2" src="{{asset('assets/icons-departments/icon-departamento-recursos-humanos.png')}}" alt="">
+                        <img id="ad-department-icon" class="p-2" src="" alt="Icono departamento">
                     </div>
                     <div class="ps-3 depa-name d-flex align-items-center">
                         <div>
-                            <span id="ad-department-name" class="fs-2 text">Recursos Humanos</span>
+                            <span id="ad-department-name" class="fs-2 text">S/D</span>
                             <br>
-                            <small class="fs-5 text">24/06/2022 · 10:00 a.m.</small>
+                            <small id="ad-hrs-date" class="fs-5 text">S/D</small>
                         </div>
                     </div>
                 </div>
-                <h2 id="ad-title" class="pt-5"></h2>
+                <h2 id="ad-title" class="pt-5">S/D</h2>
                 <p id="ad-content" class="text-justify">
+                    S/D
                 </p>
             </div>
         </div>

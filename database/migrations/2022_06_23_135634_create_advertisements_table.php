@@ -16,9 +16,10 @@ class CreateAdvertisementsTable extends Migration
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
             $table->string('title', 20)->unique();
-            $table->string('content', 500);
+            $table->string('content', 500)->nullable();
             $table->text('slug');
             $table->text('mediaContent');
+            $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

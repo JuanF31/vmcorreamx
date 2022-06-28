@@ -11,8 +11,8 @@ more.forEach(btn => btn.onclick = ( e ) => {
     console.log(ad.children[0].src)
     document.querySelector('#ad-title').innerHTML = ad.children[1].children[0].textContent
     document.querySelector('#ad-department-name').innerHTML = ad.children[1].children[1].textContent
-    console.log(ad.children[1].children[1].dataset.image)
-    console.log(ad.children[1].children[2].textContent)
+    document.querySelector('#ad-department-icon').src = ad.children[1].children[1].dataset.image
+    document.querySelector('#ad-hrs-date').innerHTML = ad.children[1].children[2].textContent
     document.querySelector('#ad-content').innerHTML = ad.children[1].children[3].textContent
 })
 

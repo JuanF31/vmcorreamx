@@ -45,33 +45,37 @@
         }
     </style>
     <div class="btn-ad container pt-5 pb-5" data-aos="fade-up">
-        <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible slider-nav-dark">
-            <ul class="slider-container py-5">
-                @for ($i = 0; $i <= 10; $i++)
-                <li>
-                    <div id="card-ad-{{$i}}" class="card bg-ad rounded shadow" style="width: 100%;">
-                        <img src="{{ asset('assets/IMG-20220623-WA0001.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="..." width="45%">
-                        <div class="card-body bg-white p-4">
-                            <h5 >Titulo {{ $i }}</h5>
-                            <h5 class="display-6 card-title" data-image="{{asset('assets/icons-departments/'."image-$i.png")}}">Departamento {{ $i }}</h5>
-                            <small>24/06/2022 · 10:00 a.m.</small>
-                            <p class="card-text text-truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse vitae sit officia consequuntur nostrum voluptatum odit id explicabo enim. Dignissimos cum inventore harum exercitationem! Laboriosam repellat sit dolorum cum quisquam.</p>
-                            <a id="btn_more" href="hola" data-id="{{$i}}" class="btn">Ver más</a>
+        @if (count($advertisements) > 0)
+            <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible slider-nav-dark">
+                <ul class="slider-container py-5">
+                    @foreach ($advertisements as $advertisement)
+                    <li>
+                        <div id="card-ad-{{$advertisement->id}}" class="card bg-ad rounded shadow" style="width: 100%;">
+                            <img src="{{ asset('assets/IMG-20220623-WA0001.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="..." width="45%">
+                            <div class="card-body bg-white p-4">
+                                <h5>{{ $advertisement->title }}</h5>
+                                <h5 class="display-6 card-title" data-image="{{asset('assets/icons-departments/' . $advertisement->department->icon)}}">{{$advertisement->department->name}}</h5>
+                                <small>{{  date('d/m/Y', strtotime($advertisement->created_at))}} · {{  date('h:i A', strtotime($advertisement->created_at))}}</small>
+                                <p class="card-text text-truncate">{{$advertisement->content}}</p>
+                                <a id="btn_more" data-id="{{$advertisement->id}}" class="btn">Ver más</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                @endfor
-            </ul>
-        
-            <button type="button" class="slider-nav" aria-label="Go left"></button>
-            <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
-        
-            <div class="slider-indicators">
-                @for ($i = 0; $i <= 5; $i++)
-                    <button aria-label="Go to slide"></button>
-                @endfor
+                    </li>
+                    @endforeach
+                </ul>
+            
+                <button type="button" class="slider-nav" aria-label="Go left"></button>
+                <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+            
+                <div class="slider-indicators">
+                    @for ($i = 0; $i <= (count($advertisements) / 2) - 1; $i++)
+                        <button aria-label="Go to slide"></button>
+                    @endfor
+                </div>
             </div>
-        </div>
+        @else
+            <h2>No hay anuncios disponibles</h2>
+        @endif
     </div>
 @endsection
 
