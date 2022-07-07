@@ -38,23 +38,27 @@
         @forelse ($advertisements as $advertisement)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-
+                    {{$advertisement->title}}
                 </td>
-                <td class="px-6 py-4">
-
+                <td class="px-6 py-4 text-truncate">
+                    {{$advertisement->content}}
                 </td>                     
-                <td class="px-6 py-4 text-xl font-extrabold">
-
+                <td class="px-6 py-4">
+                    {{ $advertisement->department->name }}
+                </td>
+                <td class="px-6 py-4"> 
+                    {{date('d/m/Y', strtotime($advertisement->created_at))}}
+                </td>
+                <td class="px-6 py-4"> 
+                    {{date('h:i A', strtotime($advertisement->created_at))}}
                 </td>
 
                 <td class="px-6 py-4 text-xl font-extrabold">
-                    <a href=""><i class="fa-solid fa-download"></i></a>
-                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href=""></a>
-                    <form  method="POST">
+                    <a class="btn text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" href="{{route('advertisements.edit', $advertisement)}}"><i class="fa-solid fa-pen-to-square"></i></a> 
+                    <form action="{{route('advertisements.destroy', $advertisement)}}"  method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">
+                        <button type="submit" class="btn text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>

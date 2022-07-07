@@ -68,7 +68,7 @@
     <div>
         <div class="row row-ad">
             <div class="col-xl-7 col-sm-12 col-md-12 bg-black image-container d-flex justify-content-center align-items-center">
-                <img class="p-5" src="{{ asset('assets/IMG-20220623-WA0001.jpg') }}" alt="">
+                <img id="ad-media-content"class="p-5" src="{{ asset('assets/IMG-20220623-WA0001.jpg') }}" alt="">
             </div>
             <div class="col-xl-5 col-sm-12 col-md-12 bg-white text-blue p-5 text-container">
                 <div class="d-flex">

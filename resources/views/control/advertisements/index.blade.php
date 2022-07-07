@@ -51,7 +51,7 @@
                     @foreach ($advertisements as $advertisement)
                     <li>
                         <div id="card-ad-{{$advertisement->id}}" class="card bg-ad rounded shadow" style="width: 100%;">
-                            <img src="{{ asset('assets/IMG-20220623-WA0001.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="..." width="45%">
+                            <img src="{{ asset('assets/advertisements/' . $advertisement->mediaContent) }}" class="img-fluid rounded mx-auto d-block" alt="{{$advertisement->mediaContent}}" width="45%">
                             <div class="card-body bg-white p-4">
                                 <h5>{{ $advertisement->title }}</h5>
                                 <h5 class="display-6 card-title" data-image="{{asset('assets/icons-departments/' . $advertisement->department->icon)}}">{{$advertisement->department->name}}</h5>

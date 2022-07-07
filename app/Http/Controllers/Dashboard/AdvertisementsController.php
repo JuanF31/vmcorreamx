@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Advertisement;
 use App\Models\Department;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Advertisement;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Advertisement\PutRequest;
+use App\Http\Requests\Advertisement\StoreRequest;
 
 class AdvertisementsController extends Controller
 {
@@ -16,7 +19,7 @@ class AdvertisementsController extends Controller
      */
     public function index()
     {
-        $advertisements = Advertisement::all(['*']);
+        $advertisements = Advertisement::orderBy('created_at', 'DESC')->get();
         return view('dashboard.advertisements.index', compact('advertisements'));
     }
 
@@ -38,9 +41,21 @@ class AdvertisementsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = $request->all();
+        $department = Department::findOrFail($data['department_id']);
+
+        $data['mediaContent'] = $mediaContent = Str::slug("advertisement $department->name" . ' ' . $data['title'], '-') . "." . $data['mediaContent']->extension();
+        $status = $request->mediaContent->move(public_path("assets/advertisements"), $mediaContent);
+
+        if($status){
+            $response = Advertisement::create($data);
+            if($response != null){
+                return redirect()->route('advertisements.index')->with('status', 'Aviso creado con exito!');
+            }
+        }
+        return redirect()->route('advertisements.index')->with('status', 'Oops!, algo salio mal');
     }
 
     /**
@@ -62,7 +77,8 @@ class AdvertisementsController extends Controller
      */
     public function edit(Advertisement $advertisement)
     {
-        //
+        $departments = Department::pluck('id', 'name');
+        return view('dashboard.advertisements.edit', compact('advertisement', 'departments'));
     }
 
     /**
@@ -72,9 +88,9 @@ class AdvertisementsController extends Controller
      * @param  \App\Models\Advertisement  $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Advertisement $advertisement)
+    public function update(PutRequest $request, Advertisement $advertisement)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -85,6 +101,14 @@ class AdvertisementsController extends Controller
      */
     public function destroy(Advertisement $advertisement)
     {
-        //
+        $img = public_path() . "/assets/advertisements/" . $advertisement->mediaContent;
+        $response = $advertisement->delete();
+        if($response){
+            if(@getimagesize($img)){
+                unlink($img);
+            }
+            return back()->with('status', 'Aviso eliminado con exito!');
+        }
+        return back()->with('status', 'Oops!, algo salio mal');
     }
 }

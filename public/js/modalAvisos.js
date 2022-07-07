@@ -8,7 +8,7 @@ more.forEach(btn => btn.onclick = ( e ) => {
     modalboxAd.style.display = "block"
     body.classList.add('block-scroll')
     const ad = document.querySelector(`#card-ad-${e.target.dataset.id}`)
-    console.log(ad.children[0].src)
+    document.querySelector('#ad-media-content').src = ad.children[0].src
     document.querySelector('#ad-title').innerHTML = ad.children[1].children[0].textContent
     document.querySelector('#ad-department-name').innerHTML = ad.children[1].children[1].textContent
     document.querySelector('#ad-department-icon').src = ad.children[1].children[1].dataset.image
