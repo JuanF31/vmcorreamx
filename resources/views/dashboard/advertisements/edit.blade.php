@@ -13,7 +13,7 @@
 
 <div class="grid grid-cols-12 gap-2 my-2">
     <div class="col-span-6">
-        <img src="{{asset('assets/advertisements/advertisement-recursos-humanos-memorandum.png')}}" width="50%" alt="">
+        <img src="{{asset('assets/advertisements/' . $advertisement->mediaContent)}}" width="50%" alt="">
     </div>
     <div class="col-span-6">
         <form action="{{route('advertisements.update', $advertisement)}}" method="POST" enctype="multipart/form-data">

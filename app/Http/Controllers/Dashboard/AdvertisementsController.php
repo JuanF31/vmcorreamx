@@ -90,7 +90,24 @@ class AdvertisementsController extends Controller
      */
     public function update(PutRequest $request, Advertisement $advertisement)
     {
-        dd($request->all());
+        $data = $request->all();
+        if(isset($data["mediaContent"])){
+            $department = Department::findOrFail($data['department_id']);
+
+            $mediaC = public_path('/assets/advertisements/') . $advertisement->mediaContent;
+            $data['mediaContent'] = $mediaContent = Str::slug("advertisement $department->name" . ' ' . $data['title'], '-') . "." . $data['mediaContent']->extension();
+            $status = $request->mediaContent->move(public_path("/assets/advertisements/"), $mediaContent);
+            if($status){
+                if(@getimagesize($mediaC)){
+                    unlink($mediaC);
+                }
+            }
+        }
+        $response = $advertisement->update($data);
+        if($response){
+            return redirect()->route('advertisements.index')->with('status', 'Aviso actualizado con exito!');
+        }
+        return redirect()->route('advertisements.index')->with('status', 'Oops!, algo salio mal');
     }
 
     /**

@@ -74,8 +74,8 @@
                                         <i class="fa-solid fa-file-arrow-down"></i>                
                                     </a>
                                     @if ($resource->type == 'image' || $resource->type == 'pdf')
-                                        <a id="myImg" data-link="{{ asset('' . Storage::url('public/resources/' . strtolower(Auth::user()->department->name) . '/' . $resource->resource)) }}" title="{{$resource->name_resource}}" data-type="{{ $resource->type }}">
-                                            <i class="fa-solid fa-eye" data-link="{{ asset('' . Storage::url('public/resources/' . strtolower(Auth::user()->department->name) . '/' . $resource->resource)) }}" title="{{$resource->name_resource}}" data-type="{{ $resource->type }}"></i>
+                                        <a id="myImg" data-link="{{ asset('resources/' . strtolower(Auth::user()->department->name) . '/' . $resource->resource) }}" title="{{$resource->name_resource}}" data-type="{{ $resource->type }}">
+                                            <i class="fa-solid fa-eye" data-link="{{ asset('resources/' . strtolower(Auth::user()->department->name) . '/' . $resource->resource) }}" title="{{$resource->name_resource}}" title="{{$resource->name_resource}}" data-type="{{ $resource->type }}"></i>
                                         </a>
                                     @endif
                                 </div>

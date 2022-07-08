@@ -63,7 +63,7 @@ class ResourceController extends Controller
         $response = Resource::create($data);
         
         if($response){
-            $file = $request->file('resource')->storeAs('public/resources/'.strtolower($department->name), $file_name, 'local');
+            $file = $request->resource->move(public_path('resources/' . strtolower($department->name)), $file_name);
             if($file) return redirect()->route('resources.index', $department)->with('status', 'Recurso guardado con exito!');
         }
         return redirect()->route('resources.create', $department)->with('status', 'Oops!, algo salio mal');
@@ -139,8 +139,9 @@ class ResourceController extends Controller
     }
     public function download_resource(Resource $resource)
     {
-        if (Storage::disk('local')->exists('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource)) {
-            return Storage::download('public/resources/' . strtolower($resource->department->name) . '/' . $resource->resource);
+        $file = public_path('resources\\' . strtolower($resource->department->name) . '\\' . $resource->resource);
+        if(file_exists($file)){
+            return response()->download($file);
         }
         return back()->with('status', 'No se encontro el recurso solicitado');
     }

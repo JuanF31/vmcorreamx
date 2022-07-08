@@ -64,36 +64,31 @@
                         @endswitch
                     </td>                     
                     <td class="px-6 py-4 text-xl font-extrabold">
-                        @switch($resource->type)
-                            @case('pdf')
-                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                        <a href="{{ asset('resources/' . strtolower($department->name) . '/' . $resource->resource) }}" title="{{$resource->name_resource}}" target="_blank">
+                            @switch($resource->type)
+                                @case('pdf')
                                     <i class="fa-solid fa-file-pdf"></i>
-                                </a>
-                            @break
-                            @case('image')
-                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                @break
+                                @case('image')
                                     <i class="fa-solid fa-image"></i>
-                                </a>
-                            @break
-                            @case('font')
-                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                    
+                                @break
+                                @case('font')
                                     <i class="fa-solid fa-font"></i>
-                                </a>
-                            @break
-                            @case('text-document')
-                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                    
+                                @break
+                                @case('text-document')
                                     <i class="fa-solid fa-file-word"></i>
-                                </a>
-                            @break
-                            @case('presentation-document')
-                                <a href="{{ asset('' . Storage::url('public/resources/' . strtolower($department->name) . '/' . $resource->resource)) }}" target="_blank">
+                                    
+                                @break
+                                @case('presentation-document')
                                     <i class="fa-regular fa-file-powerpoint"></i>
-                                </a>
-                            @break
-                            @default
-                                <i class="fa-solid fa-circle-question"></i>
-                            @break
-                        @endswitch
+                                @break
+                                @default
+                                    <i class="fa-solid fa-circle-question"></i>
+                                @break
+                            @endswitch
+                        </a>
                     </td>
                     <td class="px-6 py-4">
                         {{ ($resource->published == 'yes') ? 'Si' : 'No'  }}
@@ -113,13 +108,6 @@
                             </button>
                         </form>
                     </td>
-                    {{-- <td class="px-6 py-4">
-                        <a href="{{ route('users.show', $user) }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Detalles</a>
-
-                        <a href="{{ route('users.edit', $user) }}" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Editar</a>
-                        <a href="{{ route('profile.card', $user) }}" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Perfil</a>
-                        <a href="{{ route('password-change.edit', $user) }}" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2">Contraseña</a>
-                    </td> --}}
                 <tr>
             @empty
                 <tr class="dark:bg-gray-800 dark:border-gray-700">

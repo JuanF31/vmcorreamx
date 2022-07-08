@@ -24,9 +24,6 @@
                     <x-nav-link :href="route('organizational.index')" :active="request()->routeIs('organizations.index')">
                         {{ __('Organigrama') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('directories.index')" :active="request()->routeIs('directories.index')">
-                        {{ __('Directorio') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('advertisements.index')" :active="request()->routeIs('advertisements.index')">
                         {{ __('Avisos') }}
                     </x-nav-link>
@@ -89,9 +86,6 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('organizational.index')" :active="request()->routeIs('organizations.index')">
                 {{ __('Organigrama') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link  :href="route('directories.index')" :active="request()->routeIs('directories.index')">
-                {{ __('Directorio') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link  :href="route('advertisements.index')" :active="request()->routeIs('advertisements.index')">
                 {{ __('Avisos') }}

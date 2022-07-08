@@ -86,7 +86,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     })->name('dashboard');
     Route::resource('departments', DepartmentController::class)->except('show');
     Route::resource('organizational', Organizational_chartController::class)->except('show');
-    Route::resource('directories', DirectoryController::class)->except('show');
     Route::resources([
         'users' => UserController::class,
     ]);
@@ -95,7 +94,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
     Route::put('organizational/{organizational_chart}/change-status', [Organizational_chartController::class, 'change_status'])->name('organizational.change-status');
     Route::get('change-password/{user}/edit', [UserController::class, 'edit_password'])->name('password-change.edit');
     Route::put('change-password/{user}', [UserController::class, 'update_password'])->name('password-change.update');
-    Route::put('directories/{directory}/change-status', [DirectoryController::class, 'change_status'])->name('directories.change-status');
     Route::resource('resources', ResourceController::class)->only('destroy', 'edit', 'update');
     Route::get('resources/{department}/show', [ResourceController::class, 'index'])->name('resources.index');
     Route::get('resources/{department}/create', [ResourceController::class, 'create'])->name('resources.create');
